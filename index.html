@@ -1,42 +1,280 @@
- <ul>
-        <h1>封装</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\封装\1.基本概念.html">基本概念</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\封装\2.访问权限修饰符.html">访问权限修饰符</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-        <h1>继承</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\1.基本概念.html">基本概念</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\2.继承语法.html">继承语法</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\3.单继承特性.html">单继承特性</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\4.可继承的成员.html">可继承的成员</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\5.不可继承的成员.html">不可继承的成员</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\6.优先调用父类构造.html">优先调用父类构造方法</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\7.方法表.html">方法表</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\继承\8.方法重写的规则.html">方法重写的规则</a></li>
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
 
 
-        <h1>多态</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\多态\1.基本概念.html">基本概念</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\多态\2.方法重载(Overloading).html">方法重载(Overloading)</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\多态\3.方法重写(Overriding).html">方法重写(@Overriding)</a></li>
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
 
-        <h1>抽象类</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\抽象类\1.基本概念.html">基本概念</a></li>
-     
-
-        <h1>接口</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\接口\1.基本概念.html">基本概念</a></li>
-     
-        <h1>代码块</h1>
-        <li><a href="">静态代码块</a></li>
-        <li><a href="">构造代码块</a></li>
-        <li><a href="">局部代码块</a></li>
+         <script>
+    async function loadHtmlFile(url) 
+    {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
-        <h1>内部类</h1>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\内部类\成员内部类.html">成员内部类</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\内部类\静态内部类.html">静态内部类</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\内部类\局部内部类.html">局部内部类</a></li>
-        <li><a href="C:\Users\rzd28\Desktop\阿东知识库\Java\内部类\匿名内部类.html">匿名内部类</a></li>
-      
+        const htmlContent = await response.text();
+        document.getElementById('content-container').innerHTML = htmlContent;
+      } catch (error) {
+        console.error('加载文件失败:', error);
+      }
+    }
 
+    // 加载另一个HTML文件
+    loadHtmlFile('导航栏(公共区域).html');
+  </script>
          
-     </ul>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h1>Java学习路线与进阶指南</h1>
+            <p>要确保内容全面，但不过于冗长，重点突出主流技术，同时给出扩展方向，让用户根据兴趣选择。</p>
+            <p>以下是Java学习的系统路线，分阶段、循序渐进，适合新手到进阶开发者：</p>
+          
+            <hr>
+            <h2>一、Java基础阶段（1 - 3个月）</h2>
+            <ul>
+              <li><h3>1. 核心语法</h3>
+                <ul>
+                  <li>变量、数据类型、运算符、流程控制（if - else、循环）</li>
+                  <li>面向对象（OOP）：类、对象、继承、多态、封装、抽象类、接口</li>
+                  <li>异常处理、集合框架（List/Set/Map）、泛型、IO流</li>
+                  <li>Java 8+特性：Lambda表达式、Stream API、Optional类</li>
+                </ul>
+              </li>
+              <li><h3>2. 开发环境</h3>
+                <ul>
+                  <li>JDK安装与环境变量配置</li>
+                  <li>IDE使用（IntelliJ IDEA或Eclipse）</li>
+                  <li>基础调试与单元测试（JUnit）</li>
+                </ul>
+              </li>
+              <li><h3>3. 基础工具与库</h3>
+                <ul>
+                  <li>构建工具：Maven/Gradle</li>
+                  <li>版本控制：Git（基础命令、GitHub/GitLab）</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>二、Java进阶阶段（3 - 6个月）</h2>
+            <ul>
+              <li><h3>1. 数据库与持久化</h3>
+                <ul>
+                  <li>SQL基础：MySQL/PostgreSQL（增删改查、事务、索引）</li>
+                  <li>JDBC：数据库连接、CRUD操作</li>
+                  <li>ORM框架：MyBatis、Hibernate</li>
+                  <li>连接池：HikariCP、Druid</li>
+                </ul>
+              </li>
+              <li><h3>2. Java Web开发</h3>
+                <ul>
+                  <li>Servlet与JSP（了解即可，现代开发较少直接使用）</li>
+                  <li>Web框架：Spring Boot（核心功能、自动配置、Starter）</li>
+                  <li>RESTful API设计与开发（Spring MVC）</li>
+                  <li>常用工具：Swagger（API文档）、Postman（接口测试）</li>
+                </ul>
+              </li>
+              <li><h3>3. 主流技术栈</h3>
+                <ul>
+                  <li>Spring生态：Spring MVC、Spring Data JPA、Spring Security</li>
+                  <li>模板引擎：Thymeleaf（前后端不分离场景）</li>
+                  <li>微服务入门：Spring Cloud Alibaba（Nacos、OpenFeign、Gateway）</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>三、高级与实战阶段（6 - 12个月）</h2>
+            <ul>
+              <li><h3>1. 并发编程</h3>
+                <ul>
+                  <li>多线程基础：Thread/Runnable、线程池（ExecutorService）</li>
+                  <li>锁机制：synchronized、ReentrantLock</li>
+                  <li>JUC包：ConcurrentHashMap、Atomic类、CountDownLatch</li>
+                  <li>高并发场景设计：线程安全、CAS、AQS原理</li>
+                </ul>
+              </li>
+              <li><h3>2. JVM与性能调优</h3>
+                <ul>
+                  <li>JVM内存模型（堆、栈、方法区）</li>
+                  <li>垃圾回收算法（GC）、常用工具（jstat、VisualVM）</li>
+                  <li>JVM参数调优与OOM问题排查</li>
+                </ul>
+              </li>
+              <li><h3>3. 分布式与微服务</h3>
+                <ul>
+                  <li>微服务架构：Spring Cloud Netflix/Dubbo</li>
+                  <li>消息队列：Kafka/RabbitMQ</li>
+                  <li>缓存：Redis（数据结构、持久化、集群）</li>
+                  <li>分布式事务：Seata、RocketMQ事务消息</li>
+                </ul>
+              </li>
+              <li><h3>4. 设计模式与架构</h3>
+                <ul>
+                  <li>常用设计模式：单例、工厂、观察者、策略</li>
+                  <li>代码规范与设计原则（SOLID、DRY）</li>
+                  <li>系统架构：DDD（领域驱动设计）、分层架构</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>四、项目实战（贯穿全程）</h2>
+            <ul>
+              <li><h3>1. 练手项目</h3>
+                <ul>
+                  <li>管理系统：CRM、OA、图书管理系统</li>
+                  <li>电商平台：商品模块、订单系统、支付对接</li>
+                  <li>博客/论坛系统：用户权限、文章管理、评论功能</li>
+                  <li>微服务项目：拆分为用户服务、订单服务、商品服务</li>
+                </ul>
+              </li>
+              <li><h3>2. 开源与协作</h3>
+                <ul>
+                  <li>参与GitHub开源项目（如Spring生态项目）</li>
+                  <li>学习代码规范与协作流程（Git分支管理、Code Review）</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>五、深入学习（1年以上）</h2>
+            <ul>
+              <li><h3>1. 源码与底层原理</h3>
+                <ul>
+                  <li>阅读JDK源码（集合类、并发包）</li>
+                  <li>研究Spring框架源码（IoC、AOP实现）</li>
+                </ul>
+              </li>
+              <li><h3>2. 扩展方向</h3>
+                <ul>
+                  <li>大数据：Hadoop、Spark（Java/Scala）</li>
+                  <li>Android开发：Kotlin与Jetpack</li>
+                  <li>云原生：Docker、Kubernetes、Service Mesh</li>
+                  <li>性能优化：全链路压测、JVM调优实战</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>六、学习资源推荐</h2>
+            <ul>
+              <li><h3>1. 书籍</h3>
+                <ul>
+                  <li>《Java核心技术卷I/II》</li>
+                  <li>《Effective Java》</li>
+                  <li>《Spring实战》</li>
+                  <li>《深入理解Java虚拟机》</li>
+                </ul>
+              </li>
+              <li><h3>2. 在线资源</h3>
+                <ul>
+                  <li>官方文档：Oracle Java Docs、Spring官方指南</li>
+                  <li>平台：B站（实战视频）、Coursera、慕课网</li>
+                  <li>社区：Stack Overflow、掘金、InfoQ</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+            <h2>注意事项</h2>
+            <ul>
+              <li>1. 多写代码：理论结合实践，避免只看不练。</li>
+              <li>2. 理解原理：如HashMap实现、Spring AOP代理机制。</li>
+              <li>3. 参与社区：关注技术动态（如Java新版本特性）。</li>
+              <li>4. 避免误区：不盲目追求新技术，先夯实基础。</li>
+            </ul>
+        </div>
+    </body>
+
+
+   
+
+</html>
+
+
+
+
