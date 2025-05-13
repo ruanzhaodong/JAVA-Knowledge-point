@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            <script>
+              const xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://ruanzhaodong.github.io/JAVA-href/', true);
+              xhr.onreadystatechange = function () 
+              {
+                if (xhr.readyState === 4 && xhr.status === 200)
+                 {
+                  const responseText = xhr.responseText;
+                  const targetDiv = document.getElementById('target');
+                  targetDiv.innerHTML = responseText;
+                }
+              };
+              xhr.send();
+            </script>
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+           
+        
+            <h1>Java 多态概念</h1>
+
+    <h2>什么是多态</h2>
+    <p>多态（Polymorphism）是 Java 面向对象编程的三大特性之一，它允许不同类的对象对同一消息做出不同的响应。简单来说，多态就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量到底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。</p>
+    <hr>
+
+    <h2>多态的实现方式</h2>
+    <h3>方法重载（Overloading）</h3>
+    <p>方法重载是指在一个类中定义多个同名的方法，但这些方法的参数列表（参数个数、参数类型或参数顺序）不同。编译器会根据调用方法时传递的参数的不同来决定调用哪个具体的方法。</p>
+    <pre>
+class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+    </pre>
+    <h3>方法重写（Overriding）和向上转型</h3>
+    <p>方法重写发生在具有继承关系的子类和父类之间，子类可以重写父类的方法。向上转型是指将子类对象赋值给父类引用变量。通过父类引用调用重写的方法时，会根据实际指向的子类对象来执行相应的方法。</p>
+    <pre>
+class Animal {
+    public void makeSound() {
+        System.out.println("动物发出声音");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("汪汪汪");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.makeSound();
+    }
+}
+    </pre>
+    <hr>
+
+    <h2>多态的必要条件</h2>
+    <ol>
+        <li><strong>继承关系</strong>：多态通常基于继承来实现，子类继承父类的属性和方法。</li>
+        <li><strong>方法重写</strong>：子类需要重写父类的方法，以提供不同的实现。</li>
+        <li><strong>向上转型</strong>：使用父类的引用变量来引用子类的对象。</li>
+    </ol>
+    <hr>
+
+    <h2>多态的优点</h2>
+    <ul>
+        <li><strong>可扩展性</strong>：可以在不修改现有代码的情况下，通过添加新的子类来扩展系统的功能。</li>
+        <li><strong>可维护性</strong>：多态使得代码结构更加清晰，降低了代码的耦合度，便于维护和修改。</li>
+        <li><strong>灵活性</strong>：可以根据不同的需求，动态地选择不同的实现方式。</li>
+    </ul>
+    <hr>
+
+    <h2>多态的局限性</h2>
+    <p>多态虽然有很多优点，但也存在一定的局限性。例如，通过父类引用变量只能访问父类中定义的属性和方法，不能直接访问子类特有的属性和方法。如果需要访问子类特有的属性和方法，需要进行向下转型，但向下转型存在一定的风险，如果转型失败会抛出 `ClassCastException` 异常。</p>
+    <pre>
+class Animal {
+    public void eat() {
+        System.out.println("动物进食");
+    }
+}
+
+class Cat extends Animal {
+    public void catchMouse() {
+        System.out.println("猫抓老鼠");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Cat();
+        animal.eat();
+        // 不能直接调用 animal.catchMouse()
+        if (animal instanceof Cat) {
+            Cat cat = (Cat) animal;
+            cat.catchMouse();
+        }
+    }
+}
+    </pre>
+    <hr>
+
+    <h2>总结</h2>
+    <p>多态是 Java 中非常重要的特性，它提高了代码的可扩展性、可维护性和灵活性。通过方法重载和方法重写以及向上转型，实现了不同对象对同一消息的不同响应。但在使用多态时，也需要注意其局限性，合理运用向下转型来访问子类特有的属性和方法。</p>   
+
+        </div>
+    </body>
+
+</html>
+        
