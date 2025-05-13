@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            <script>
+              const xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://ruanzhaodong.github.io/JAVA-href/', true);
+              xhr.onreadystatechange = function () 
+              {
+                if (xhr.readyState === 4 && xhr.status === 200)
+                 {
+                  const responseText = xhr.responseText;
+                  const targetDiv = document.getElementById('target');
+                  targetDiv.innerHTML = responseText;
+                }
+              };
+              xhr.send();
+            </script>
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <uL>
+                <li><P><h3>父类与子类构造方法先后调用顺序的<u>理解误区</u></h3></P></li>
+                <P><b>错误理解：在继承中，先调用父类构造方法完成父类对象的初始化，其次才会调用子类构造方法完成子类对象的初始化。❌❌❌❌</b></P>
+                <p><b>正确的基本理解：在继承中，先调用子类构造方法，由子类构造方法体中的第一句super()语句调用父类构造方法<u>完成父类对象初始化</u>，然后回到子类构造方法，完成子类对象初始化。</b></p>
+                <hr>
+                <li><h3>父类与子类构造方法先后调用顺序的<u>多角度剖析</u></h3></li>
+                <P><B>一、编译角度：当我们没有在子类构造方法中显式使用super()调用父类构造方法时，javac在编译class文件时，会在自动将super()语句添加至子类构造方法的开头。</B></P>
+                <p><b>二、内存角度：当子类对象实例化，会先将子类构造方法压入栈区，然后在执行其super()语句将父类构造方法压入栈区，执行其父类构造方法，来完成父类对象的初始化，最后回到子类构造方法，来完成子类对象的初始化。</b></h3></p>
+                <p><b>三、功能角度：构造方法的功能是用于初始化对象，子类构造方法是用于初始化子类对象，父类构造方法是用于初始化父类对象，尽管super()语句是存在于子类构造方法中，但是功能上与构造方法背道而驰。</b></p>
+                <P><h4><u>总结一：大部分初学者，由于编写的代码量较少，没有去尝试过使用super()显式调用父类构造方法，然后对构造方法语法规则也没有很多的知识储配，所以隐式的super()调用方式，导致了父类先调用的错误认知。</u></h4></P>
+                <P><h4><u>总结二：当理解了super()隐式添加与调用，那么当子类对象实例化，父类构造方法必然是栈顶方法，只有当栈顶方法执行完并出栈后，才会执行子类构造方法剩下的语句。</u></h4></P>
+                <P></P>
+        
+                <hr>
+            </uL>
+        </div>
+    </body>
+
+</html>
+        

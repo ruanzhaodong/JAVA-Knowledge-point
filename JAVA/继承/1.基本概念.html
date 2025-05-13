@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            <script>
+              const xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://ruanzhaodong.github.io/JAVA-href/', true);
+              xhr.onreadystatechange = function () 
+              {
+                if (xhr.readyState === 4 && xhr.status === 200)
+                 {
+                  const responseText = xhr.responseText;
+                  const targetDiv = document.getElementById('target');
+                  targetDiv.innerHTML = responseText;
+                }
+              };
+              xhr.send();
+            </script>
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <ul>
+                <h3> <li>继承的基本概念</li></h3>
+                <p><b>它允许一个类(子类)继承另一个类(父类)的成员，从而实现代码的复用与代码的扩展。</b></p>
+        
+                <hr>
+                <h3> <li>继承的核心目的</li></h3>
+                <p><b>代码复用：子类可以直接使用，在父类中继承到的成员，避免了重复编写相同的代码，提高开发效率。</b></p>
+                <p><b>扩展功能：子类可以在继承父类的基础上，扩展新的属性与方法。同时也可以通过方法重写，对父类的方法进行重写扩展。</b></p>
+                <p><b>建立层次结构：通过继承可以建立起类的层次结构，清晰的表达出类与类之间的关系，使代码提高更具逻辑性和可维护性。</b></p>
+                <hr>
+             </ul>
+        </div>
+    </body>
+
+</html>
+        
