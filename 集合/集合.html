@@ -97,10 +97,15 @@
         /* 主内容区域样式 */
        .main-content 
        {
+            flex:1;
             padding: 20px; /* 设置 */
-        }
+       }
 
-        
+       .main-content div
+       {
+        text-align: center;
+       }
+                
    </style>
 
   
@@ -119,10 +124,9 @@
         <div class="sidebar">
            
             <div id="target"></div>
-
-            <script>
-    async function loadHtmlFile(url) 
-    {
+           <script>
+           async function loadHtmlFile(url) 
+           {
       try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -132,17 +136,19 @@
       } catch (error) {
         console.error('加载文件失败:', error);
       }
-    }
+         }
 
     // 加载另一个HTML文件
     loadHtmlFile('导航栏(集合公共区域).html');
           </script>
-          
+
         </div>
 
         <!-- 主内容区域 -->
         <div class="main-content">
-
+              <div>
+                 <img src="单列集合的继承体系.png">
+              </div>          
         </div>
            
     </body>
@@ -151,7 +157,6 @@
    
 
 </html>
-
 
 
 
