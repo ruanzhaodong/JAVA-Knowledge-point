@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            <script>
+              const xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://ruanzhaodong.github.io/JAVA-href/', true);
+              xhr.onreadystatechange = function () 
+              {
+                if (xhr.readyState === 4 && xhr.status === 200)
+                 {
+                  const responseText = xhr.responseText;
+                  const targetDiv = document.getElementById('target');
+                  targetDiv.innerHTML = responseText;
+                }
+              };
+              xhr.send();
+            </script>
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h2 class="text-2xl font-bold text-blue-600">匿名内部类基本概念</h2>
+            <p class="text-gray-700 leading-relaxed">匿名内部类是一种没有显式名称的局部内部类，它允许你在使用的地方直接定义并实例化一个类。通常用于实现接口或继承抽象类，且只需使用一次该类的情况。</p>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">主要特点</h3>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                    <li>没有类名，因此不能有构造方法，使用时直接实例化。</li>
+                    <li>只能使用一次，通常在创建对象时定义。</li>
+                    <li>可以访问外部类的成员变量和方法，包括私有成员。如果在局部作用域内，还可以访问该作用域内的 final 变量（Java 8 及以后，只要变量实际上是 final 的即可）。</li>
+                    <li>适合用于实现简单的接口或继承抽象类，代码更加简洁。</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">示例代码（Java）</h3>
+                <pre class="bg-gray-100 p-4 rounded">
+                    <code class="language-java">
+        // 定义一个接口
+        interface Greeting {
+            void sayHello();
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                // 使用匿名内部类实现 Greeting 接口
+                Greeting greeting = new Greeting() {
+                    @Override
+                    public void sayHello() {
+                        System.out.println("Hello!");
+                    }
+                };
+                // 调用匿名内部类实现的方法
+                greeting.sayHello();
+            }
+        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+            
+        </div>
+    </body>
+
+
+   
+
+</html>

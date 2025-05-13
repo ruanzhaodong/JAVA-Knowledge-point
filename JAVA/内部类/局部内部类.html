@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            <script>
+              const xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://ruanzhaodong.github.io/JAVA-href/', true);
+              xhr.onreadystatechange = function () 
+              {
+                if (xhr.readyState === 4 && xhr.status === 200)
+                 {
+                  const responseText = xhr.responseText;
+                  const targetDiv = document.getElementById('target');
+                  targetDiv.innerHTML = responseText;
+                }
+              };
+              xhr.send();
+            </script>
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h2 class="text-2xl font-bold text-blue-600">局部内部类基本概念</h2>
+            <p class="text-gray-700 leading-relaxed">局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内。</p>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">主要特点</h3>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                    <li>局部内部类不能使用访问修饰符（如 public、private 等），因为它的作用域仅限于定义它的代码块内。</li>
+                    <li>局部内部类可以访问外部类的成员变量和方法，包括私有成员。</li>
+                    <li>如果局部内部类定义在实例方法中，它可以访问外部类的所有成员；如果定义在静态方法中，只能访问外部类的静态成员。</li>
+                    <li>局部内部类可以访问定义它的方法中的局部变量，但这些局部变量必须是 final 或者实际上是 final 的（Java 8 及以后版本，局部变量即使不声明为 final，只要不被重新赋值，也可被局部内部类访问）。</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">示例代码（Java）</h3>
+                <pre class="bg-gray-100 p-4 rounded">
+                    <code class="language-java">
+        class Outer {
+            private int outerVar = 10;
+        
+            public void outerMethod() {
+                final int localVar = 20; // 在 Java 8 及以后，这里的 final 可以省略
+        
+                // 局部内部类
+                class LocalInner {
+                    public void printVars() {
+                        System.out.println("外部类的成员变量: " + outerVar);
+                        System.out.println("外部方法的局部变量: " + localVar);
+                    }
+                }
+        
+                LocalInner inner = new LocalInner();
+                inner.printVars();
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                Outer outer = new Outer();
+                outer.outerMethod();
+            }
+        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+        </div>
+    </body>
+
+
+   
+
+</html>
