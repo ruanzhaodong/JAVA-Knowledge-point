@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+   <style>
+      body 
+        {
+            margin: 0px;
+            padding: 0px;
+            /* 将外边距、内边距重置为0px，以防网页中的元素出现空白间距。 */
+
+            font-family: Arial, sans-serif;  /* 设置网页字体 */
+        }
+
+        /* 标题头部样式表设计 */
+       .header
+        {
+            background-color: #333;   /* 设置盒子的背景颜色 */
+
+            color: rgb(194, 53, 53);  /* 设置盒子中的元素颜色 */
+            text-align: center;       /* 设置盒子中的元素居中 */ 
+
+            padding: 20px 0px;    /* 通过设置盒子内容 距离 盒子边的上下内边距的方式，来达到垂直居中的效果。 */ 
+
+            /* 一个盒子从外到内由外边距(margin)、边框(border)、内边距(padding)、盒子内容组成的。
+            外边距(margin)：排开盒子上、下、左、右的元素，从而与其它元素产生空白间距。
+            边框(border)：盒子的边框。
+            内边距(padding)：盒子内容距离盒子边的间距。注意：设置该属性会撑大盒子的大小。*/
+        
+        }
+
+        .header h1
+        {
+               margin: 0px 0px;  /* 重置h1标签的默认margin属性值。 */
+        }
+
+        /* 整体布局容器 */
+       .container 
+       {
+            display: flex;  /* 开启弹性布局。可以使块级元素，并行排列。这样就可以使，侧边栏(盒子)与主内容(盒子)并行排列在一起。 */
+       }
+
+        /* 侧边栏样式 */
+       .sidebar 
+       {
+            width: 200px;    /* 设计 */
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;  /* 取消ul标签中li标签的小点。 */
+            padding: 0px; /* 重置ul元素的内边距 */
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;  /* 设置li元素的底部间距 */
+        }
+
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none; /* 取消链接的下划线 */
+            color: #000;       /* 设置a元素中的字体元素的颜色 */
+            display: block;     /* 将a元素的显示模式inline(行内元素) 转换为 block(块级元素)*/
+            /* 行内元素：无法设置宽度、高度，该元素的宽度、高度由内容的宽度、高度撑开。
+               块内元素：默认宽度为父级元素的宽度。该元素的宽度、高度可以自由设置。
+                */
+
+            padding: 5px 10px;  /* 设置盒子内容距离盒子边的间距 。上下 左右 */
+
+            background-color: #f0f0f0; /* 设置li列表项中的a元素的背景颜色 */
+
+            border-radius: 5px;  /* 为li列表项中的a元素添加圆角边框 */
+
+        }
+
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的盒子的背景颜色 */
+            color: #007BFF;        /* 鼠标悬停时的字体颜色。 */
+        }
+
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex:1;
+            padding: 20px; /* 设置 */
+       }
+
+         .main-content .div1{
+            padding: 0px 10px;
+            width: 500px;
+            border: 2px solid black;
+         }
+
+
+        
+     
+                
+   </style>
+
+  
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+           <script>
+           async function loadHtmlFile(url) 
+           {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+      } catch (error) {
+        console.error('加载文件失败:', error);
+      }
+         }
+
+    // 加载另一个HTML文件
+    loadHtmlFile('../../导航栏(集合公共区域).html');
+          </script>
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+         <h3>ArrayList集合常用添加元素的方法</h3>
+        <div class="div1">
+            <P>public boolean add(E e)</P>
+        </div>
+        <P>功能：用于添加元素，一次添加元素个数：1。</P>
+        <h3>源码分析</h3>
+
+        <div class="div1">
+        <P>public boolean add(E e)</P>
+        <P>modCount++;</P>
+        <hr>
+        <P>add(e, elementData, size);</P>
+        <P>调用其它重载add()方法</P>
+        <b>传递参数：</b>
+        <P>参数1：(e)元素引用地址</P>
+        <P>参数2：elementData(数组引用地址)</P>
+        <P>参数3：size(集合元素个数)</P>
+        <hr>
+        <P>return true;</P>
+        </div>
+
+        <br>
+
+        <div class="div1">
+          <p>private void add(E e, Object[] elementData, int s)</p>
+          <p>{</p>
+          <hr>  
+          <p>if (s == elementData.length)</p>
+          <P>元素个数 是否等于 数组长度</P>
+          <P>作用：当元素个数 等于 数组长度，那么添加的元素(e)就无存储空间，此时就会进行数组容量扩容。</P>
+          <hr>
+          <p>elementData = grow();</p>
+          <P>当条件为真，就会执行该语句。<B>注意：当无条件时，编译器会将if语句的下一句语句视为条件体。</B></P>
+          <P>作用：扩容elementData数组容量大小。</P>
+          <hr>
+          <p>elementData[s] = e;</p>
+          <P>作用：在elementData数组的s索引处，添加该元素(e)。</P>
+          <hr>
+          <p>size = s + 1;</p>
+          <P>作用：添加了一个新元素，那么相应的就要将集合中用于记录元素个数的成员属性 + 1。</P>
+          <hr>
+          <p>}</p>
+        </div>
+
+        <br>
+       
+         <div class="div1">
+            <P>private Object[] grow()</P>
+            <P>{</P>
+            <hr>    
+            <P>return grow(size + 1);</P>
+            <P>调用其它重载grow(int minCapacity)方法版本</P>
+            <P>作用：数组最低扩容容量size + 1。(意义：数组扩容后的容量，必须要能存储添加的新元素)</P>
+            <hr>
+            <P>}</P>
+        </div>
+
+        <br>
+
+        <div class="div1">
+            <P>private Object[] grow(int minCapacity)</P>
+            <p>{</p>
+            <hr>    
+            <p>int oldCapacity(旧容量) = elementData.length;</p>
+            <P>计算未扩容的数组长度并赋值给oldCapacity变量。</P>
+            <P>作用：</P>
+            <hr>
+            <p>if (oldCapacity > 0 || elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</p>
+            <P></P>
+            <P>判断未扩容的数组长度 是否小于 0 || 判断elementData引用的地址是否是DEFAULTCAPACITY_EMPTY_ELEMENTDATA数组(默认数组)</P>
+            <P>作用：</P>
+            <hr>
+            <p>{</p>
+            <p>int newCapacity = ArraysSupport.newLength(oldCapacity,</p>
+            <P>minCapacity - oldCapacity,</P>
+            <P> oldCapacity >> 1);</P>
+            <P>return elementData = Arrays.copyOf(elementData, newCapacity);</P>
+            <P>}</P>
+            <hr>
+            <P><b>假语句体</b></P>
+            <P>else</P>
+            <P>{</P>
+            <P>return elementData = new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];</P>    
+            <P>}</P>
+            <P>}</P>    
+        </div>
+
+        <hr>
+
+        <br>
+
+        <div class="div1">
+            <P>public boolean addAll(int index, Collection&lt? extends E&gt c)</P>
+        </div>
+        <P>功能：用于添加集合与指定集合容量大小。</P>
+        
+        <hr>
+       </div>
+           
+    </body>
+
+
+   
+
+</html>
+
+
+
