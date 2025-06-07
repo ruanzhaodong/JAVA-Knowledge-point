@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+   <style>
+      body 
+        {
+            margin: 0px;
+            padding: 0px;
+            /* 将外边距、内边距重置为0px，以防网页中的元素出现空白间距。 */
+
+            font-family: Arial, sans-serif;  /* 设置网页字体 */
+        }
+
+        /* 标题头部样式表设计 */
+       .header
+        {
+            background-color: #333;   /* 设置盒子的背景颜色 */
+
+            color: rgb(194, 53, 53);  /* 设置盒子中的元素颜色 */
+            text-align: center;       /* 设置盒子中的元素居中 */ 
+
+            padding: 20px 0px;    /* 通过设置盒子内容 距离 盒子边的上下内边距的方式，来达到垂直居中的效果。 */ 
+
+            /* 一个盒子从外到内由外边距(margin)、边框(border)、内边距(padding)、盒子内容组成的。
+            外边距(margin)：排开盒子上、下、左、右的元素，从而与其它元素产生空白间距。
+            边框(border)：盒子的边框。
+            内边距(padding)：盒子内容距离盒子边的间距。注意：设置该属性会撑大盒子的大小。*/
+        
+        }
+
+        .header h1
+        {
+               margin: 0px 0px;  /* 重置h1标签的默认margin属性值。 */
+        }
+
+        /* 整体布局容器 */
+       .container 
+       {
+            display: flex;  /* 开启弹性布局。可以使块级元素，并行排列。这样就可以使，侧边栏(盒子)与主内容(盒子)并行排列在一起。 */
+       }
+
+        /* 侧边栏样式 */
+       .sidebar 
+       {
+            width: 200px;    /* 设计 */
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;  /* 取消ul标签中li标签的小点。 */
+            padding: 0px; /* 重置ul元素的内边距 */
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;  /* 设置li元素的底部间距 */
+        }
+
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none; /* 取消链接的下划线 */
+            color: #000;       /* 设置a元素中的字体元素的颜色 */
+            display: block;     /* 将a元素的显示模式inline(行内元素) 转换为 block(块级元素)*/
+            /* 行内元素：无法设置宽度、高度，该元素的宽度、高度由内容的宽度、高度撑开。
+               块内元素：默认宽度为父级元素的宽度。该元素的宽度、高度可以自由设置。
+                */
+
+            padding: 5px 10px;  /* 设置盒子内容距离盒子边的间距 。上下 左右 */
+
+            background-color: #f0f0f0; /* 设置li列表项中的a元素的背景颜色 */
+
+            border-radius: 5px;  /* 为li列表项中的a元素添加圆角边框 */
+
+        }
+
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的盒子的背景颜色 */
+            color: #007BFF;        /* 鼠标悬停时的字体颜色。 */
+        }
+
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex:1;
+            padding: 20px; /* 设置 */
+       }
+
+        .main-content .div1{
+            width: 500px;
+            border: 2px solid black;
+         }
+
+         .main-content .div1 p{
+            margin: 10px 20px;
+         }
+     
+                
+   </style>
+
+  
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+           <script>
+           async function loadHtmlFile(url) 
+           {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+      } catch (error) {
+        console.error('加载文件失败:', error);
+      }
+         }
+
+    // 加载另一个HTML文件
+    loadHtmlFile('../导航栏(集合公共区域).html');
+          </script>
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h1>知识需修正</h1>
+             <h3>ArrayList迭代器源码解析</h3>
+             <P>ArrayList集合中的元素遍历，依靠内部类Itr实现，该内部类Itr实现了Iterator接口的方法(遍历集合的方式)。</P>
+             <P><B>ArrayList源码解析方式：</B></P>
+             <P><b>一、理解内部类Itr的成员属性</b></P>
+             <P><b>二、理解遍历集合中的元素的底层实现原理(主要方法)</b></P>
+             <P><b>三、结合知识点，理解迭代器遍历集合中的元素的原理</b></P>
+             <hr>
+
+              <h3>内部类Itr成员属性</h3>
+             <div class="div1">
+                <P>int cursor(索引);</P>
+                <P>int lastRet = -1(返回元素);</P>    
+                <P>int expectedModCount = modCount;</P>
+              </div>
+              <P>cursor：初始化值为0，利用数组(索引)与size(集合元素个数)的不一致机制，从而实现检查集合中是否存在下一个元素的逻辑。</P>
+              <p>lastRet：初始化值为-1，用于决定返回索引[lastRet]的元素。</p>
+              <p></p>
+             <hr>
+
+             <h3>遍历集合元素的底层实现原理(主要方法)</h3>
+             <div class="div1">
+                <P>public boolean hasNext()</P>
+                <P>{</P>    
+                <P>return cursor != size(ArrayList类的成员属性);</P>
+                <P>}</P>
+             </div>
+              <P>源码解析：在计算机中的数组，元素个数从0开始计数，而在人类世界中，元素个数从1开始计数。所以数组的元素个数 与 人类世界中的元素个数 元素个数相差1。</P>
+              <P>该方法只有一段语句，该语句就是将数组的元素个数(cursor) 与 人类世界的元素个数(size)进行关系比较。</P>
+              <P>当cursor 与 size 相等时，意味着无下下一个元素(无元素个数相差)，此时返回false，结束循环读取集合中的元素，从而避免出现读取空元素的问题。</P>
+              <br>
+              <div class="div1">
+                <P>public E next()</P>
+                <P>{</P>    
+                <P>checkForComodification();</P>
+
+                <hr>
+                <p>int i = cursor;</p>
+                <P>创建局部变量i并赋值为cursor成员属性的数值</P>
+
+                <hr>
+                <p>if (i >= size)</p>
+                <p>throw new NoSuchElementException();</p>
+                <P>比较i 与 size的元素相差数，当大于或者相等时，代表集合遍历完成，则会抛出异常终止迭代器遍历。</P>
+                <P>避免了，读取空元素(null)的问题。</P>
+                <hr>
+                <p>Object[] elementData = ArrayList.this.elementData;</p>
+                <hr>
+                
+                
+
+                <p>if (i >= elementData.length)</p>
+                <p>throw new ConcurrentModificationException();</p>
+
+                <hr>
+                <p>cursor = i + 1;</p>
+                <P>当该方法没有抛出任何异常，那么就会执行到该语句，该语句用于指向下下一个元素。</P>
+
+                <hr>
+                <p>return (E) elementData[lastRet = i];</p>
+                <P>返回elementData[i]的元素。</P>
+                <hr>
+                <P>}</P>
+             </div>
+             <hr>
+
+             <h3>遍历集合中的元素</h3>
+              <div class="div1">
+                <P>ArrayList<String> list = new ArrayList();</P>    
+                <P>list.add("a");</P>
+                <P>list.add("b");</P>
+                <P>list.add("c");</P>
+                <hr>
+                <P>Iterator<String> iter = list.iterator();</P>
+                <P>获取用于遍历集合(ArrayList)元素的迭代器对象。</P>   
+                <hr>
+                <P>while(iter.hasNext())</P>
+                <P>{</P>
+                <p>System.out.println(iter.next());</p>
+                <p>}</p>
+                <P>hasnext()：循环检查集合中是否有下一个元素，当没有时就会结束循环，返回false结束循环。</P>
+                <P>next()：检查集合集合中是否有下一个元素，当没有时就会抛出异常来终止迭代器遍历。当存在下下一个元素则不会抛出异常，会将读取索引(cursor+1)，然后将i索引处的元素进行返回。</P>
+                <hr>
+             </div>
+        </div>
+           
+    </body>
+
+
+   
+
+</html>
+
+
+
+
