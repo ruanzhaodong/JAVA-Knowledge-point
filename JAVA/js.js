@@ -1,0 +1,16 @@
+
+    async function loadHtmlFile(url) 
+    {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+      } catch (error) {
+        console.error('加载文件失败:', error);
+      }
+    }
+
+    // 加载另一个HTML文件
+    loadHtmlFile('导航栏(JAVA公共区域).html');
