@@ -1,0 +1,64 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* 头部样式 */
+       .header {
+            background-color: #333;
+            color: rgb(194, 53, 53);
+            text-align: center;
+            padding: 20px 0;
+        }
+        /* 整体布局容器 */
+       .container {
+            display: flex;
+        }
+        /* 侧边栏样式 */
+       .sidebar {
+            width: 200px;
+            background-color: #ffffff; /* 设置侧边栏背景为白色 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar ul h1
+        {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #120101;
+        }
+
+        /* 侧边栏ul无序列表样式 */
+       .sidebar ul 
+       {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* 侧边栏li列表项样式 */
+       .sidebar li
+        {
+            margin-bottom: 10px;
+        }
+        /* 侧边栏a超链接样式 */
+       .sidebar li a 
+       {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* 设置列表项内容背景颜色 */
+            border-radius: 5px; /* 为列表项添加圆角 */
+            transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+        }
+       .sidebar li a:hover 
+       {
+            background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+            color: #007BFF;
+        }
+        /* 主内容区域样式 */
+       .main-content 
+       {
+            flex: 1;
+            padding: 20px;
+        }
