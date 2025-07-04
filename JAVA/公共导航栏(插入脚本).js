@@ -1,4 +1,4 @@
-// navbarLoader.js - 导航栏加载脚本
+// - 导航栏加载脚本
 async function loadHtmlFile(url, targetId = 'target') {
     try {
         const response = await fetch(url);
