@@ -13,4 +13,4 @@
     }
 
     // 加载另一个HTML文件
-    loadHtmlFile('导航栏(JAVA公共区域).html');
+    loadHtmlFile('https://github.com/ruanzhaodong/JAVA-Knowledge-point/tree/main/JAVA/导航栏(JAVA公共区域).html');
