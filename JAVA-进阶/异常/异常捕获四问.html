@@ -1,0 +1,107 @@
+<!--模板-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+
+     <style>
+
+
+
+     
+        pre { background-color: #f5f5f5; padding: 15px; border-left: 4px solid #4285f4; border-radius: 4px; overflow-x: auto; }
+        code { font-family: 'Consolas', monospace; }
+        .question { background-color: #f9f9f9; border-left: 4px solid #ff9800; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .note { background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0; border-radius: 4px; }
+      
+
+
+    </style>
+   
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+        
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+             <h1>Java异常处理 - 捕获异常四问</h1>
+    
+    <div class="question">
+        <h2>1. 若try块中代码未出现异常，程序如何执行？</h2>
+        <p>答：跳过所有catch块，若存在finally块则先执行finally中的代码，然后继续执行try-catch-finally结构后的后续代码。</p>
+    </div>
+    
+    <div class="question">
+        <h2>2. 若try块中存在多个异常点，程序如何执行？</h2>
+        <p>答：需编写多个catch块分别捕获不同类型的异常，且catch块需按<strong>“子类异常在前、父类异常在后”</strong>的顺序排列，避免子类异常被父类异常提前捕获。</p>
+        <pre><code>try {
+    // 可能抛出IOException或SQLException的代码
+} catch (SQLException e) { // 先捕获子类异常
+    e.printStackTrace();
+} catch (IOException e) { // 再捕获父类异常
+    e.printStackTrace();
+}</code></pre>
+    </div>
+    
+    <div class="question">
+        <h2>3. 若try块中出现异常但未被catch捕获，程序如何运行？</h2>
+        <p>答：异常会向上抛给JVM虚拟机处理，此时JVM会打印异常堆栈信息并<strong>终止当前线程</strong>（若为主线程则程序结束）。</p>
+    </div>
+    
+    <div class="question">
+        <h2>4. 若try块中出现异常，异常代码下方的代码是否会执行？</h2>
+        <p>答：<strong>不会执行</strong>。当try块中某行代码抛出异常时，后续代码会被跳过，程序立即跳转到对应的catch块进行异常处理。</p>
+    </div>
+    
+    <div class="note">
+        <p><span style="font-weight: bold; color: #2196f3;">finally块的特殊情况：</span></p>
+        <ul>
+            <li>即使try或catch块中存在return语句，finally块仍会在return前执行</li>
+            <li>若try块中调用<code>System.exit(0)</code>，finally块将<strong>不会执行</strong></li>
+        </ul>
+    </div>
+    </body>
+
+
+    <script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../公共导航栏(JAVA-进阶).html');
+</script>
+
+   
+
+</html>
+
+
+
+

@@ -1,0 +1,152 @@
+<!--模板-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+   
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+ <style>
+      
+        pre { background-color: #f5f5f5; padding: 15px; border-left: 4px solid #4285f4; border-radius: 4px; overflow-x: auto; }
+        code { font-family: 'Consolas', monospace; }
+        .step { background-color: #f9f9f9; border: 1px solid #eee; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .scenario { background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0; border-radius: 4px; }
+       
+    </style>
+    
+   
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+        
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+              <h1>Java异常处理 - 自定义异常</h1>
+    
+    <h2>为什么需要自定义异常？</h2>
+    <p>Java内置异常（如`NullPointerException`、`IOException`）仅覆盖通用错误场景，而业务开发中常需处理特定异常（如：</p>
+    <ul>
+        <li>用户注册时“用户名已存在”</li>
+        <li>电商系统中“库存不足”</li>
+        <li>金融系统中“交易金额超限”</li>
+    </ul>
+    <p>此时需自定义异常类，使异常信息更贴合业务场景，便于调试和维护。</p>
+    
+    <div class="step">
+        <h2>自定义异常声明步骤</h2>
+        <ol>
+            <li>创建异常类，继承`Exception`（checked异常）或`RuntimeException`（unchecked异常）</li>
+            <li>添加无参构造和有参构造（接收错误信息），调用父类构造方法</li>
+        </ol>
+        
+        <h3>代码示例</h3>
+        <p><strong>自定义checked异常（继承Exception）：</strong></p>
+        <pre><code>public class UserExistsException extends Exception {
+    public UserExistsException() {
+        super();
+    }
+    public UserExistsException(String message) {
+        super(message);
+    }
+}</code></pre>
+        
+        <p><strong>自定义unchecked异常（继承RuntimeException）：</strong></p>
+        <pre><code>public class BalanceNotEnoughException extends RuntimeException {
+    public BalanceNotEnoughException() {
+        super();
+    }
+    public BalanceNotEnoughException(String message) {
+        super(message);
+    }
+}</code></pre>
+    </div>
+    
+    <div class="scenario">
+        <h2>业务场景应用</h2>
+        <pre><code>// 用户注册服务
+public void register(String username) throws UserExistsException {
+    // 检查用户名是否已存在
+    if (userDao.exists(username)) {
+        // 抛出自定义checked异常
+        throw new UserExistsException("用户名 " + username + " 已被注册");
+    }
+    // 执行注册逻辑
+}
+
+// 调用方处理
+try {
+    userService.register("testuser");
+} catch (UserExistsException e) {
+    // 向用户展示友好提示
+    System.out.println("注册失败：" + e.getMessage());
+}</code></pre>
+    </div>
+    
+    <div class="scenario">
+        <h2>异常链与因果关系</h2>
+        <p>自定义异常可包装原始异常，通过`initCause(Throwable cause)`设置因果链，示例：</p>
+        <pre><code>public class DatabaseOperationException extends RuntimeException {
+    public DatabaseOperationException(Throwable cause) {
+        super("数据库操作失败", cause);
+        initCause(cause); // 设置原始异常为原因
+    }
+}
+
+// 使用场景
+try {
+    // 数据库操作代码
+} catch (SQLException e) {
+    // 包装为自定义异常并抛出
+    throw new DatabaseOperationException(e);
+}</code></pre>
+        <p>捕获时可通过`getCause()`获取原始异常：</p>
+        <pre><code>catch (DatabaseOperationException e) {
+    System.out.println("业务异常信息：" + e.getMessage());
+    System.out.println("原始异常：" + e.getCause());
+}</code></pre>
+    </div>
+    
+    </body>
+
+
+    <script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../公共导航栏(JAVA-进阶).html');
+</script>
+
+   
+
+</html>
+
+
+
+

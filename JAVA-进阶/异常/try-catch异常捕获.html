@@ -1,0 +1,120 @@
+<!--模板-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+
+     <style>
+      
+        pre { background-color: #f5f5f5; padding: 15px; border-left: 4px solid #4285f4; border-radius: 4px; overflow-x: auto; }
+        code { font-family: 'Consolas', monospace; }
+        .syntax { background-color: #f9f9f9; border: 1px solid #eee; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .case { background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 15px 0; border-radius: 4px; }
+       
+    </style>
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+        
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+              <h1>Java异常处理 - 异常捕获（try-catch-finally）</h1>
+    
+    <h2>语法结构</h2>
+    <div class="syntax">
+        <pre><code>try {
+    // 可能出现异常的代码
+} catch (异常类型1 异常变量1) {
+    // 处理异常类型1的逻辑
+} catch (异常类型2 异常变量2) {
+    // 处理异常类型2的逻辑
+} finally {
+    // 无论是否捕获异常，都会执行的代码块（如资源释放）
+}</code></pre>
+    </div>
+    
+    <h2>核心作用</h2>
+    <p>当代码抛出异常时，JVM不会直接终止程序，而是由用户通过catch块捕获异常并处理，使程序能够：</p>
+    <ul>
+        <li>记录错误日志而不中断流程</li>
+        <li>向用户返回友好的错误提示</li>
+        <li>释放资源（如文件流、数据库连接）</li>
+    </ul>
+    
+    <div class="case">
+        <h2>执行顺序示例</h2>
+        <pre><code>try {
+    System.out.println("尝试执行操作");
+    int result = 10 / 0; // 抛出ArithmeticException
+    System.out.println("异常下方的代码不会执行"); // 不会输出
+} catch (ArithmeticException e) {
+    System.out.println("捕获到异常：" + e.getMessage()); // 输出 "捕获到异常：除数不能为零"
+} finally {
+    System.out.println("无论是否异常，都会执行finally"); // 一定会输出
+}
+System.out.println("异常处理后的后续代码"); // 若没有异常则执行，有异常时也会执行</code></pre>
+        <p><strong>输出结果：</strong></p>
+        <pre><code>尝试执行操作
+捕获到异常：除数不能为零
+无论是否异常，都会执行finally
+异常处理后的后续代码</code></pre>
+    </div>
+    
+    <div class="case">
+        <h2>finally与return的执行顺序</h2>
+        <pre><code>public static int testFinally() {
+    try {
+        return 1; // try块中的return会先记录返回值，但不立即执行
+    } finally {
+        System.out.println("finally执行");
+        // return 2; // 若取消注释，会覆盖try的return值，最终返回2
+    }
+}
+// 调用结果：finally执行，返回1（若finally中没有return）</code></pre>
+    </div>
+    
+    </body>
+
+
+    <script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../公共导航栏(JAVA-进阶).html');
+</script>
+
+   
+
+</html>
+
+
+
+

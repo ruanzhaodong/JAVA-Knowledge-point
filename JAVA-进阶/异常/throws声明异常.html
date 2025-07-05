@@ -1,0 +1,98 @@
+<!--模板-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+
+     <style>
+       
+        pre { background-color: #f5f5f5; padding: 15px; border-left: 4px solid #4285f4; border-radius: 4px; overflow-x: auto; }
+        code { font-family: 'Consolas', monospace; }
+        .feature { background-color: #f9f9f9; border: 1px solid #eee; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .example { background-color: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 15px 0; border-radius: 4px; }
+       
+    </style>
+   
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+        
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+              <h1>Java异常处理 - 声明异常（throws关键字）</h1>
+    
+    <h2>throws的用法</h2>
+    <p>用于在方法签名后声明该方法可能抛出的异常类型，格式为：</p>
+    <pre><code>public 返回值类型 方法名(参数列表) throws 异常类型1, 异常类型2 {
+    // 方法体
+}</code></pre>
+    
+    <div class="feature">
+        <h2>throws关键字的作用</h2>
+        <ol>
+            <li>显式告知调用者该方法可能抛出的异常类型，强制调用者处理异常（通过try-catch捕获或继续用throws声明）</li>
+            <li>将异常处理逻辑与业务逻辑分离，提升代码可读性和维护性</li>
+        </ol>
+    </div>
+    
+    <div class="example">
+        <h2>代码示例</h2>
+        <p><strong>声明异常的方法：</strong></p>
+        <pre><code>public void readFile(String path) throws FileNotFoundException {
+    File file = new File(path);
+    FileInputStream fis = new FileInputStream(file); // 可能抛出FileNotFoundException
+}</code></pre>
+        <p><strong>调用方处理异常：</strong></p>
+        <pre><code>try {
+    readFile("data.txt");
+} catch (FileNotFoundException e) {
+    System.out.println("文件不存在：" + e.getMessage());
+    e.printStackTrace();
+}</code></pre>
+    </div>
+    
+    </body>
+
+
+    <script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../公共导航栏(JAVA-进阶).html');
+</script>
+
+   
+
+</html>
+
+
+
+
