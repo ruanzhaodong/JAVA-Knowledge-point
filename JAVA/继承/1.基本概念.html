@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <ul>
+                <h3> <li>继承的基本概念</li></h3>
+                <p><b>它允许一个类(子类)继承另一个类(父类)的成员，从而实现代码的复用与代码的扩展。</b></p>
+        
+                <hr>
+                <h3> <li>继承的核心目的</li></h3>
+                <p><b>代码复用：子类可以直接使用，在父类中继承到的成员，避免了重复编写相同的代码，提高开发效率。</b></p>
+                <p><b>扩展功能：子类可以在继承父类的基础上，扩展新的属性与方法。同时也可以通过方法重写，对父类的方法进行重写扩展。</b></p>
+                <p><b>建立层次结构：通过继承可以建立起类的层次结构，清晰的表达出类与类之间的关系，使代码提高更具逻辑性和可维护性。</b></p>
+                <hr>
+             </ul>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        

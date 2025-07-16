@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+            
+            
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <ul>
+                <h3> <li>private成员不可继承</li></h3>
+                <hr>
+        
+                
+        
+             </ul>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        

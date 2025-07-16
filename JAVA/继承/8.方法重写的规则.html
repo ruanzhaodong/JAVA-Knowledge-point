@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <ul>
+                <li><h3>@Override注解</h3></li>
+                <p><b>该注解写在子类重写方法的上方，也可以不写，该注解主要是用于增加代码可读性。</b></p>
+                <hr>
+                <li><h3>方法重写规则</h3></li>
+                <p><b>一、子类方法的名称、参数列表、返回类型必须一致相同。</b></p>
+                <p><b>二、子类方法重写的方法，访问权限只能大于或等于</b></p>
+                <P><B>三、如父类方法抛出异常，那么子类重写该父类方法所抛出的异常不能多于父类方法。</B></P>
+                <hr>
+            </ul>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        

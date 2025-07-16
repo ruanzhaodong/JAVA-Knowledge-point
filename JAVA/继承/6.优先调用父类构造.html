@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+              
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <uL>
+                <li><P><h3>父类与子类构造方法先后调用顺序的<u>理解误区</u></h3></P></li>
+                <P><b>错误理解：在继承中，先调用父类构造方法完成父类对象的初始化，其次才会调用子类构造方法完成子类对象的初始化。❌❌❌❌</b></P>
+                <p><b>正确的基本理解：在继承中，先调用子类构造方法，由子类构造方法体中的第一句super()语句调用父类构造方法<u>完成父类对象初始化</u>，然后回到子类构造方法，完成子类对象初始化。</b></p>
+                <hr>
+                <li><h3>父类与子类构造方法先后调用顺序的<u>多角度剖析</u></h3></li>
+                <P><B>一、编译角度：当我们没有在子类构造方法中显式使用super()调用父类构造方法时，javac在编译class文件时，会在自动将super()语句添加至子类构造方法的开头。</B></P>
+                <p><b>二、内存角度：当子类对象实例化，会先将子类构造方法压入栈区，然后在执行其super()语句将父类构造方法压入栈区，执行其父类构造方法，来完成父类对象的初始化，最后回到子类构造方法，来完成子类对象的初始化。</b></h3></p>
+                <p><b>三、功能角度：构造方法的功能是用于初始化对象，子类构造方法是用于初始化子类对象，父类构造方法是用于初始化父类对象，尽管super()语句是存在于子类构造方法中，但是功能上与构造方法背道而驰。</b></p>
+                <P><h4><u>总结一：大部分初学者，由于编写的代码量较少，没有去尝试过使用super()显式调用父类构造方法，然后对构造方法语法规则也没有很多的知识储配，所以隐式的super()调用方式，导致了父类先调用的错误认知。</u></h4></P>
+                <P><h4><u>总结二：当理解了super()隐式添加与调用，那么当子类对象实例化，父类构造方法必然是栈顶方法，只有当栈顶方法执行完并出栈后，才会执行子类构造方法剩下的语句。</u></h4></P>
+                <P></P>
+        
+                <hr>
+            </uL>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        
