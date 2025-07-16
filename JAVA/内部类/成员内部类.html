@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+            
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h1 align="center">成员内部类的基本概念</h1>
+
+            <h2>定义</h2>
+            <p>成员内部类是定义在另一个类的内部，作为外部类的一个成员存在的类。它可以像外部类的其他成员（如字段、方法）一样，被访问修饰符（如 public、private、protected 等）修饰。以下是成员内部类的基本语法结构：</p>
+            <pre>
+        class OuterClass {
+            // 外部类的成员变量和方法
+            private int outerVariable;
+        
+            public void outerMethod() {
+                System.out.println("这是外部类的方法");
+            }
+        
+            // 成员内部类
+            class InnerClass {
+                // 内部类的成员变量和方法
+                private int innerVariable;
+        
+                public void innerMethod() {
+                    System.out.println("这是内部类的方法");
+                }
+            }
+        }
+            </pre>
+        
+            <h2>特点</h2>
+            <ol>
+                <li>
+                    <strong>可以访问外部类的成员</strong>：成员内部类可以直接访问外部类的所有成员，包括私有成员。这是因为成员内部类持有一个对外部类对象的引用。例如，在内部类的方法中可以直接使用外部类的成员变量和调用外部类的方法。
+                </li>
+                <li>
+                    <strong>依赖外部类对象</strong>：要创建成员内部类的对象，必须先创建外部类的对象。因为成员内部类是外部类的一个成员，它的存在依赖于外部类对象。
+                </li>
+                <li>
+                    <strong>可以被访问修饰符修饰</strong>：成员内部类可以使用各种访问修饰符来控制其可见性，如 public 表示可以被任何类访问，private 表示只能在外部类内部访问。
+                </li>
+            </ol>
+        
+            <h2>创建成员内部类对象的方式</h2>
+            <p>要创建成员内部类的对象，需要先创建外部类的对象，然后通过外部类对象来创建内部类对象。示例代码如下：</p>
+            <pre>
+        public class Main {
+            public static void main(String[] args) {
+                // 创建外部类对象
+                OuterClass outer = new OuterClass();
+                // 通过外部类对象创建内部类对象
+                OuterClass.InnerClass inner = outer.new InnerClass();
+                // 调用内部类的方法
+                inner.innerMethod();
+            }
+        }
+            </pre>
+        
+            <h2>作用</h2>
+            <ol>
+                <li>
+                    <strong>封装性</strong>：将相关的类组织在一起，提高代码的封装性。内部类可以访问外部类的私有成员，同时又可以将内部类的实现细节隐藏起来，外部类以外的其他类无法直接访问内部类。
+                </li>
+                <li>
+                    <strong>实现多继承的效果</strong>：在 Java 中，一个类只能继承一个父类，但可以通过成员内部类来实现类似多继承的功能。一个类可以有多个成员内部类，每个内部类可以继承不同的类，从而在一定程度上弥补了 Java 单继承的局限性。
+                </li>
+            </ol>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+
+   
+
+</html>

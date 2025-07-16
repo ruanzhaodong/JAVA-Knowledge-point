@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+             
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h2 class="text-2xl font-bold text-blue-600">静态内部类基本概念</h2>
+            <p class="text-gray-700 leading-relaxed">静态内部类是定义在另一个类内部，使用 <code class="bg-gray-200 p-1 rounded">static</code> 关键字修饰的类。它和外部类实例没有关联，能够独立存在。</p>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">主要特点</h3>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                    <li>不依赖外部类实例，可直接创建静态内部类的对象。</li>
+                    <li>只能访问外部类的静态成员，无法访问外部类的非静态成员。</li>
+                    <li>有助于把相关的类组织在一起，提升代码的可读性与可维护性。</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-blue-600">示例代码（Java）</h3>
+                <pre class="bg-gray-100 p-4 rounded">
+                    <code class="language-java">
+        class OuterClass {
+            static int outerStaticVar = 10;
+            int outerNonStaticVar = 20;
+        
+            static class StaticInnerClass {
+                void displayStaticVar() {
+                    System.out.println("外部类的静态变量: " + outerStaticVar);
+                }
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                OuterClass.StaticInnerClass inner = new OuterClass.StaticInnerClass();
+                inner.displayStaticVar();
+            }
+        }
+                    </code>
+                </pre>
+            </div>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+
+   
+
+</html>
