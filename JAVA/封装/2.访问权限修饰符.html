@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+           
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <ul>
+                <h3><li>默认（包级）</li></h3>
+                <B><p>类、属性、方法，无访问权限修饰符时。同一个包中才能进行访问。</p></B>
+               </ul>
+        
+               <hr>
+        
+            <ul>
+                <h3><li>public访问权限修饰符</li></h3>
+                <B><p>使用public修饰的类、属性、方法。任何一个包中，都是可以进行访问的。</p></B>
+               </ul>
+        
+               <hr>
+        
+               <ul>
+               <h3><li>protected访问权限修饰符</li></h3>
+               <B><p>使用protected修饰的内部类、属性、方法。同一个包中都可以进行访问，不同的包中只有子类可以进行访问。</p></B>
+              </ul>
+        
+              <hr>
+        
+              <ul>
+                <h3><li>private访问权限修饰符</li></h3>
+                <B><p>使用private修饰的内部类、属性、方法。同一个包中的类内才能访问。外部若要访问，需在类内提供公共的访问方法，以供外部调用后进行访问。</p></B>
+               </ul>
+        
+        
+        
+              <hr>
+        
+              <ul>
+                <h3><li><b>可视化图</b></li></h3>
+                <p></p>
+              <table border="1">
+                <thead>
+                    <tr>
+                        <th>作用域</th>
+                        <th>public</th>
+                        <th>protected</th>
+                        <th>默认（包级）</th>
+                        <th>private</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>类内</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                    </tr>
+                    <tr>
+                        <td>同一个包中类外</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>不同包中的子类</td>
+                        <td>✔️</td>
+                        <td>✔️</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>不同包中的非子类</td>
+                        <td>✔️</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        
+        </ul>
+        
+        <hr>
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        
