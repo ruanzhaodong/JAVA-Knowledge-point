@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+    
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+
+             
+
+
+
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+           
+            <h1>Java 方法重载概念</h1>
+
+            <h2>什么是方法重载</h2>
+            <p>方法重载（Method Overloading）是 Java 中的一个重要特性，它允许在一个类中定义多个同名的方法，但这些方法的参数列表必须不同。参数列表不同可以体现在参数的个数、类型或顺序上。方法重载使得程序更加清晰和易于维护，因为它允许使用相同的方法名来执行相似的操作。</p>
+            <hr>
+        
+            <h2>方法重载的条件</h2>
+            <ol>
+                <li><strong>参数个数不同</strong>：可以定义多个同名方法，但每个方法的参数数量不同。</li>
+                <li><strong>参数类型不同</strong>：即使参数个数相同，只要参数的类型不同，也可以构成方法重载。</li>
+                <li><strong>参数顺序不同</strong>：当参数类型不同时，参数的顺序不同也能构成方法重载。</li>
+            </ol>
+            <p>需要注意的是，方法的返回类型和访问修饰符不能作为方法重载的依据。也就是说，仅仅返回类型或访问修饰符不同的方法不能构成方法重载。</p>
+            <hr>
+        
+            <h2>方法重载示例</h2>
+            <h3>参数个数不同的重载</h3>
+            <pre>
+        class Calculator {
+            // 两个整数相加
+            public int add(int a, int b) {
+                return a + b;
+            }
+        
+            // 三个整数相加
+            public int add(int a, int b, int c) {
+                return a + b + c;
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                Calculator calculator = new Calculator();
+                int result1 = calculator.add(1, 2);
+                int result2 = calculator.add(1, 2, 3);
+                System.out.println("两个整数相加结果: " + result1);
+                System.out.println("三个整数相加结果: " + result2);
+            }
+        }
+            </pre>
+            <h3>参数类型不同的重载</h3>
+            <pre>
+        class Calculator {
+            // 两个整数相加
+            public int add(int a, int b) {
+                return a + b;
+            }
+        
+            // 两个浮点数相加
+            public double add(double a, double b) {
+                return a + b;
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                Calculator calculator = new Calculator();
+                int result1 = calculator.add(1, 2);
+                double result2 = calculator.add(1.5, 2.5);
+                System.out.println("两个整数相加结果: " + result1);
+                System.out.println("两个浮点数相加结果: " + result2);
+            }
+        }
+            </pre>
+            <h3>参数顺序不同的重载</h3>
+            <pre>
+        class Example {
+            // 先 int 后 double
+            public void print(int a, double b) {
+                System.out.println("int: " + a + ", double: " + b);
+            }
+        
+            // 先 double 后 int
+            public void print(double a, int b) {
+                System.out.println("double: " + a + ", int: " + b);
+            }
+        }
+        
+        public class Main {
+            public static void main(String[] args) {
+                Example example = new Example();
+                example.print(1, 2.5);
+                example.print(2.5, 1);
+            }
+        }
+            </pre>
+            <hr>
+
+            <h2>方法重写与方法重载的区别</h2>
+            <table border="1">
+                <tr>
+                    <th>比较项</th>
+                    <th>方法重写</th>
+                    <th>方法重载</th>
+                </tr>
+                <tr>
+                    <td>定义位置</td>
+                    <td>发生在具有继承关系的子类和父类之间</td>
+                    <td>发生在同一个类中</td>
+                </tr>
+                <tr>
+                    <td>方法名</td>
+                    <td>必须相同</td>
+                    <td>必须相同</td>
+                </tr>
+                <tr>
+                    <td>参数列表</td>
+                    <td>必须相同</td>
+                    <td>必须不同</td>
+                </tr>
+                <tr>
+                    <td>返回类型</td>
+                    <td>兼容或相同</td>
+                    <td>可以不同</td>
+                </tr>
+                <tr>
+                    <td>访问修饰符</td>
+                    <td>子类不能更严格</td>
+                    <td>无限制</td>
+                </tr>
+            </table>
+            
+            <hr>
+        
+            <h2>方法重载的优点</h2>
+            <ul>
+                <li><strong>提高代码可读性</strong>：使用相同的方法名来执行相似的操作，使代码更易于理解。</li>
+                <li><strong>增强代码可维护性</strong>：当需要修改或扩展功能时，只需在同一个方法名下添加新的重载方法，而不需要创建新的方法名。</li>
+                <li><strong>符合面向对象的设计原则</strong>：方法重载体现了多态性的一种形式，使得代码更加灵活和可扩展。</li>
+            </ul>
+            <hr>
+        
+            <h2>总结</h2>
+            <p>方法重载是 Java 中一个强大的特性，它允许在一个类中定义多个同名的方法，通过不同的参数列表来区分这些方法。合理使用方法重载可以提高代码的可读性和可维护性，使程序更加清晰和易于理解。</p>
+
+        </div>
+    
+<script>
+async function loadHtmlFile(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+    } catch (error) {
+        console.error('加载文件失败:', error);
+    }
+}
+
+// 加载另一个HTML文件
+loadHtmlFile('../导航栏(JAVA公共区域).html');
+</script>
+</body>
+
+</html>
+        
