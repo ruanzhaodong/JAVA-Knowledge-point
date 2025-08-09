@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿东的知识库</title>
+  <link rel="stylesheet" href="../../css(所有网页公共样式表).css">
+
+    
+   <style>
+    
+         .main-content .div1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 500px;
+            border: 2px solid black;
+            height: 50px;
+         }
+     
+                
+   </style>
+
+  
+
+</head>
+
+
+<body>
+    <!-- 头部区域 -->
+    <div class="header">
+        <h1>阿东的知识库</h1>
+    </div>
+    <!-- 开启弹性布局 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+           
+            <div id="target"></div>
+         
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <h3>本地输入字节流</h3>
+            <div class="div1">
+                <span>学习请点击-></span><a href="#">FileInputStream</a>
+            </div>
+            <P><b>特点：最基本的输入字节流。</b></P>
+            <hr>
+
+           <div class="main-content">
+            <h3>缓冲输入字节流</h3>
+            <div class="div1">
+                <span>学习请点击-></span><a href="#">BufferedInputStream</a>
+            </div>
+            <P><b></b></P>
+            <hr>
+
+        </div>
+
+           
+    </body>
+
+
+    <script>
+           async function loadHtmlFile(url) 
+           {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const htmlContent = await response.text();
+        document.getElementById('target').innerHTML = htmlContent;
+      } catch (error) {
+        console.error('加载文件失败:', error);
+      }
+         }
+
+
+    // 加载另一个HTML文件
+    loadHtmlFile('../公共导航栏(JAVA-进阶).html');
+          </script>
+
+
+</html>
+
+
+
+
+
